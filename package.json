@@ -1,0 +1,18 @@
+{
+  "name": "es6-karma-jasmine",
+  "version": "0.0.0",
+  "description": "ES6 karma jasmine template",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "es6",
+    "ecmascript",
+    "karma",
+    "jasmine",
+    "gulp"
+  ],
+  "author": "Abhishek Jain",
+  "license": "MIT"
+}
