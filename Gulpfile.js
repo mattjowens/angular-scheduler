@@ -3,7 +3,9 @@ var $gulp = require('gulp-load-plugins')({
 	lazy: false
 });
 
-var scripts = ['node_modules/babel/browser-polyfill.js',
+var scripts = [
+	'node_modules/babel/browser-polyfill.js',
+	'lib/lodash.js',
 	'js/**/*.js'];
 
 
