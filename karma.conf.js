@@ -17,9 +17,12 @@ module.exports = function (config) {
             'node_modules/linqjs/dist/linq.min.js',
             'js/classes/extensions/String.js',
             'js/classes/extensions/Date.js',
-            'js/classes/DayViewModel.js',
+            'js/classes/viewModels/DayViewModel.js',
+            'js/classes/viewModels/AppointmentViewModel.js',
             'js/classes/builders/CalendarBuilder.js',
-            'js/specs/CalendarBuilder-spec.js'
+            'js/specs/CalendarBuilder-spec.js',
+            'js/classes/validators/DateLocationValidator.js',
+            'js/specs/DateLocationValidator-spec.js',
         ],
 
         // list of files to exclude
