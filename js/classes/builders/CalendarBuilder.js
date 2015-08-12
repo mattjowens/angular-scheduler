@@ -1,21 +1,54 @@
-import Date from "../extensions/Date.js";
+//import Date from "../extensions/Date.js";
 
 class CalendarBuilder{
-      constructor(appointmentService, year) {
-        this._monthDays = [31,28,31,30,31,30,31,31,30,31,30,31]
-        this._appointmentService = appointmentService;
-        this._year = year;
+      constructor(publicHolidays, year) {
+         try {
+             this._monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+             this._publicHolidaysAsStrings = new Array();
 
-        var year = new Date(this._year,0,1);
+             if(publicHolidays!==null) {
+                 publicHolidays.forEach((element, index)=> {
+                     this._publicHolidaysAsStrings.push(element.publicHoliday);
+                 });
+             }
 
-        if(year.isLeapYear()){
-            this.monthDays[1]=29;
-        }
+             this._year = year;
+
+             var year = new Date(this._year, 0, 1);
+
+             if (year.isLeapYear()) {
+                 this._monthDays[1] = 29;
+             }
+         }
+          catch(exception){
+              console.log(exception)
+              throw exception;
+          }
 
     }
 
     buildCalendar(){
-        return new[];
+        let calendar=new Array();
+        this._monthDays.forEach((element,index)=>{
+            calendar[index]=new Array();
+            for(var i =0; i < element;i++){
+               var calendarDate = new Date(this._year,index-1,i);
+                var dayViewModel = new DayViewModel(calendarDate);
+                calendar[index][i]=dayViewModel;
+
+                if(this._publicHolidaysAsStrings.length>0) {
+                    var matchedDates = this._publicHolidaysAsStrings.where(function(x){
+                        return x===calendarDate.formatMMDDYYYY();
+                    });
+
+                    if (matchedDates.length > 0) {
+                        dayViewModel.setPublicHoliday(true);
+                    }
+                }
+
+            }
+        });
+         return calendar;
     }
 
 

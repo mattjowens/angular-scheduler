@@ -14,10 +14,7 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
 
         // list of files / patterns to load in the browser
-        files: [
-        //   'js/classes/extensions/Date-compiled.js',
-        //  'js/classes/builders/CalendarBuilder-compiled.js',
-        'js/test.es6-compiled.js', 'js/test.spec.js'],
+        files: ['node_modules/requirejs/require.js', 'node_modules/linqjs/dist/linq.min.js', 'js/classes/extensions/String.js', 'js/classes/extensions/Date.js', 'js/classes/DayViewModel.js', 'js/classes/builders/CalendarBuilder.js', 'js/specs/CalendarBuilder-spec.js'],
 
         // list of files to exclude
         exclude: [],
@@ -31,7 +28,9 @@ module.exports = function (config) {
 
         usePolling: true,
 
-        plugins: ['karma-jasmine', 'karma-babel-preprocessor', 'karma-phantomjs-launcher'],
+        plugins: ['karma-jasmine', 'karma-babel-preprocessor', 'karma-phantomjs-launcher',
+        // 'karma-chrome-launcher',
+        'karma-IE-launcher'],
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
