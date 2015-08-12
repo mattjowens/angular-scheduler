@@ -38,13 +38,16 @@ describe("CalendarBuilderSpec", function () {
     });
 
     it("Year is 2015, expect 2nd Jan and 8th Feb to be public holiday", function () {
-        var publicHolidays = [{ publicHoliday: '2015-01-02' }, { publicHoliday: '2015-02-08' }];
+        var publicHolidays = [{ publicHoliday: '2015-01-02' }, { publicHoliday: '2015-02-08' }, { publicHoliday: '2015-12-31' }];
         var caldendarBuilder = new CalendarBuilder(publicHolidays, 2015);
         var result = caldendarBuilder.buildCalendar();
         var jan = result[1][1];
         var feb = result[2][7];
+        var dec = result[12];
+        console.log(dec);
         expect(jan.isPublicHoliday()).toBe(true);
         expect(feb.isPublicHoliday()).toBe(true);
+        expect(dec.isPublicHoliday()).toBe(true);
     });
 });
 

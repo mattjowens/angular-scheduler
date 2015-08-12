@@ -30,7 +30,9 @@ class CalendarBuilder{
     buildCalendar(){
         let calendar=new Array();
         this._monthDays.forEach((element,index)=>{
+            var realIndex = index+1;
             calendar[index]=new Array();
+            console.log(realIndex);
             for(var i =0; i < element;i++){
                var calendarDate = new Date(this._year,index-1,i);
                 var dayViewModel = new DayViewModel(calendarDate);
