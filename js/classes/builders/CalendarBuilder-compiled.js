@@ -44,28 +44,38 @@ var CalendarBuilder = (function () {
         value: function buildCalendar() {
             var _this2 = this;
 
-            var calendar = new Array();
-            this._monthDays.forEach(function (element, index) {
-                var realIndex = index + 1;
-                calendar[index] = new Array();
-                console.log(realIndex);
-                for (var i = 0; i < element; i++) {
-                    var calendarDate = new Date(_this2._year, index - 1, i);
-                    var dayViewModel = new DayViewModel(calendarDate);
-                    calendar[index][i] = dayViewModel;
+            try {
+                var _ret = (function () {
+                    var calendar = new Array();
+                    _this2._monthDays.forEach(function (element, index) {
+                        calendar[index] = new Array();
+                        for (var i = 1; i <= element; i++) {
+                            var calendarDate = new Date(_this2._year, index, i);
+                            var dayViewModel = new DayViewModel(calendarDate);
+                            calendar[index][i - 1] = dayViewModel;
 
-                    if (_this2._publicHolidaysAsStrings.length > 0) {
-                        var matchedDates = _this2._publicHolidaysAsStrings.where(function (x) {
-                            return x === calendarDate.formatMMDDYYYY();
-                        });
-
-                        if (matchedDates.length > 0) {
-                            dayViewModel.setPublicHoliday(true);
+                            if (_this2._publicHolidaysAsStrings.length > 0) {
+                                var matchedDates = _this2._publicHolidaysAsStrings.where(function (x) {
+                                    var dateAsPrettyFormat = calendarDate.formatMMDDYYYY();
+                                    if (x === dateAsPrettyFormat) {
+                                        dayViewModel.setPublicHoliday(true);
+                                        return true;
+                                    }
+                                    return false;
+                                });
+                            }
                         }
-                    }
-                }
-            });
-            return calendar;
+                    });
+                    return {
+                        v: calendar
+                    };
+                })();
+
+                if (typeof _ret === "object") return _ret.v;
+            } catch (excep) {
+                console.log(excep);
+                throw excep;
+            }
         }
     }]);
 

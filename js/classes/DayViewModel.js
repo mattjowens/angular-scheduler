@@ -4,6 +4,7 @@ class DayViewModel{
         if(date==null) {
             throw 'date constructor argument cannot be null';
         }
+
         this._date = date;
         this._isPublicHoliday = false;
     }
@@ -11,6 +12,10 @@ class DayViewModel{
     getDate(){
         return this._date;
 
+    }
+
+    toString(){
+        return this._date;
     }
 
     isWeekend(){
@@ -24,7 +29,7 @@ class DayViewModel{
     }
 
     setPublicHoliday(value){
-        this._isPublicHoliday= value;
+            this._isPublicHoliday= value;
     }
 
 }

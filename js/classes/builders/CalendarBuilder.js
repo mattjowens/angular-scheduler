@@ -28,29 +28,35 @@ class CalendarBuilder{
     }
 
     buildCalendar(){
-        let calendar=new Array();
-        this._monthDays.forEach((element,index)=>{
-            var realIndex = index+1;
-            calendar[index]=new Array();
-            console.log(realIndex);
-            for(var i =0; i < element;i++){
-               var calendarDate = new Date(this._year,index-1,i);
-                var dayViewModel = new DayViewModel(calendarDate);
-                calendar[index][i]=dayViewModel;
+        try {
+            let calendar = new Array();
+            this._monthDays.forEach((element, index)=> {
+                calendar[index] = new Array();
+                for (var i = 1; i <= element; i++) {
+                    var calendarDate = new Date(this._year, index, i);
+                    var dayViewModel = new DayViewModel(calendarDate);
+                    calendar[index][i - 1] = dayViewModel;
 
-                if(this._publicHolidaysAsStrings.length>0) {
-                    var matchedDates = this._publicHolidaysAsStrings.where(function(x){
-                        return x===calendarDate.formatMMDDYYYY();
-                    });
-
-                    if (matchedDates.length > 0) {
-                        dayViewModel.setPublicHoliday(true);
+                    if (this._publicHolidaysAsStrings.length > 0)
+                    {
+                       var matchedDates = this._publicHolidaysAsStrings.where(function (x) {
+                           var dateAsPrettyFormat = calendarDate.formatMMDDYYYY();
+                           if(x === dateAsPrettyFormat)
+                           {
+                               dayViewModel.setPublicHoliday(true);
+                               return true;
+                           }
+                           return false;
+                        });
                     }
-                }
 
-            }
-        });
-         return calendar;
+                }
+            });
+            return calendar;
+        }catch(excep){
+            console.log(excep);
+            throw excep;
+        }
     }
 
 

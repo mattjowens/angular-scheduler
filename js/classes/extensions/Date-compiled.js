@@ -6,9 +6,8 @@ Date.prototype.getFirstDay = function () {
 };
 
 Date.prototype.formatMMDDYYYY = function () {
-
     var month = this.getMonth() + 1 < 10 ? '0' + (this.getMonth() + 1) : String(this.getMonth() + 1);
-    var date = this.getDate() + 1 < 10 ? '0' + (this.getDate() + 1) : String(this.getDate() + 1);
+    var date = this.getDate() < 10 ? '0' + this.getDate() : String(this.getDate());
 
     return this.getFullYear() + "-" + month + "-" + date;
 };

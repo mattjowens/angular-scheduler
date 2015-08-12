@@ -11,6 +11,7 @@ var DayViewModel = (function () {
         if (date == null) {
             throw 'date constructor argument cannot be null';
         }
+
         this._date = date;
         this._isPublicHoliday = false;
     }
@@ -18,6 +19,11 @@ var DayViewModel = (function () {
     _createClass(DayViewModel, [{
         key: 'getDate',
         value: function getDate() {
+            return this._date;
+        }
+    }, {
+        key: 'toString',
+        value: function toString() {
             return this._date;
         }
     }, {
