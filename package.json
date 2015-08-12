@@ -1,7 +1,7 @@
 {
-  "name": "es6-karma-jasmine",
+  "name": "angular-scheduler",
   "version": "0.0.0",
-  "description": "ES6 karma jasmine template",
+  "description": "angular scheduler",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Fri Sep 26 2014 22:18:38 GMT+0100 (GMT Daylight Time)
 
+'use strict';
+
 module.exports = function (config) {
     config.set({
 
@@ -13,15 +15,12 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-         //   'js/classes/extensions/Date-compiled.js',
-          //  'js/classes/builders/CalendarBuilder-compiled.js',
-            'js/test.es6-compiled.js',
-            'js/test.spec.js'
-        ],
+        //   'js/classes/extensions/Date-compiled.js',
+        //  'js/classes/builders/CalendarBuilder-compiled.js',
+        'js/test.es6-compiled.js', 'js/test.spec.js'],
 
         // list of files to exclude
-        exclude: [
-        ],
+        exclude: [],
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -30,13 +29,9 @@ module.exports = function (config) {
             "js/**/*.js": ["babel"]
         },
 
-		usePolling: true,
+        usePolling: true,
 
-        plugins: [
-            'karma-jasmine',
-			'karma-babel-preprocessor',
-			'karma-phantomjs-launcher'
-        ],
+        plugins: ['karma-jasmine', 'karma-babel-preprocessor', 'karma-phantomjs-launcher'],
 
         // test results reporter to use
         // possible values: 'dots', 'progress'
@@ -65,3 +60,5 @@ module.exports = function (config) {
         singleRun: false
     });
 };
+
+//# sourceMappingURL=karma.conf-compiled.js.map
