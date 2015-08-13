@@ -10,7 +10,7 @@ class AppointmentViewModel{
     }
 
     get startDate(){
-        return this.startDate;
+        return this._startDate;
     }
 
     set startDate(value){

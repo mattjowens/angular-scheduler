@@ -14,16 +14,43 @@ describe("DateLocationValidator", function () {
     });
 
     it("Fails when appointment clashes exactly", function () {
-        try {
             var appointments = [new AppointmentViewModel(1, new Date(2015, 1, 1), new Date(2015, 1, 2))];
             var validator = new DateLocationValidator(appointments);
             var appointmentViewmodel = new AppointmentViewModel(1, new Date(2015, 1, 1), new Date(2015, 1, 2));
-            var result = new validator.validate(appointmentViewmodel);
+            var result = validator.validate(appointmentViewmodel);
             expect(result.outcome).toBe(false);
-        } catch (excep) {
-            console.log(excep);
-            expect(true).toBe(false);
-        }
+    });
+
+    it("Fails when appointment clashes exactly- with time", function () {
+            var appointments = [new AppointmentViewModel(1, new Date(2015, 1, 1, 8, 30, 0), new Date(2015, 1, 2, 17, 30, 0))];
+            var validator = new DateLocationValidator(appointments);
+            var appointmentViewmodel = new AppointmentViewModel(1, new Date(2015, 1, 1, 8, 30, 0), new Date(2015, 1, 2, 17, 30, 0));
+            var result = validator.validate(appointmentViewmodel);
+            expect(result.outcome).toBe(false);
+    });
+
+    it("Fails when appointment falls within existing - both bounds", function () {
+            var appointments = [new AppointmentViewModel(1, new Date(2015, 1, 1, 8, 30, 0), new Date(2015, 1, 2, 17, 30, 0))];
+            var validator = new DateLocationValidator(appointments);
+            var appointmentViewmodel = new AppointmentViewModel(1, new Date(2015, 1, 1, 9, 30, 0), new Date(2015, 1, 2, 16, 30, 0));
+            var result = validator.validate(appointmentViewmodel);
+            expect(result.outcome).toBe(false);
+    });
+
+    it("Fails when appointment falls within existing - upper bounds", function () {
+            var appointments = [new AppointmentViewModel(1, new Date(2015, 1, 1, 8, 30, 0), new Date(2015, 1, 2, 17, 30, 0))];
+            var validator = new DateLocationValidator(appointments);
+            var appointmentViewmodel = new AppointmentViewModel(1, new Date(2015, 1, 1, 7, 30, 0), new Date(2015, 1, 2, 16, 30, 0));
+            var result = validator.validate(appointmentViewmodel);
+            expect(result.outcome).toBe(false);
+    });
+
+    it("Fails when appointment falls within existing - lower bounds", function () {
+            var appointments = [new AppointmentViewModel(1, new Date(2015, 1, 1, 8, 30, 0), new Date(2015, 1, 2, 17, 30, 0))];
+            var validator = new DateLocationValidator(appointments);
+            var appointmentViewmodel = new AppointmentViewModel(1, new Date(2015, 1, 1, 10, 30, 0), new Date(2015, 1, 2, 18, 30, 0));
+            var result = validator.validate(appointmentViewmodel);
+            expect(result.outcome).toBe(false);
     });
 });
 

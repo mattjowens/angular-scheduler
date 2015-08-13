@@ -15,6 +15,7 @@ module.exports = function (config) {
         files: [
             'node_modules/requirejs/require.js',
             'node_modules/linqjs/dist/linq.min.js',
+            'lib/moment.js',
             'js/classes/extensions/String.js',
             'js/classes/extensions/Date.js',
             'js/classes/viewModels/DayViewModel.js',

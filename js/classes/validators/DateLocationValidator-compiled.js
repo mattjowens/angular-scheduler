@@ -12,38 +12,42 @@ var DateLocationValidator = (function () {
         _classCallCheck(this, DateLocationValidator);
 
         this._appointments = appointments;
-        console.log(this._appointments);
     }
 
     _createClass(DateLocationValidator, [{
         key: 'validate',
         value: function validate(appointmentViewModel) {
-            console.log('validating');
-
             if (this._appointments == null || this._appointments.length == 0) {
-                console.log('appointments null');
-                console.log(this._appointments);
                 return {
                     outcome: true,
                     reason: '',
                     conflictId: 0
                 };
             } else {
-
-                console.log('appointments not null');
                 var result = this._appointments.where(function (appointment) {
-                    console.log('searching');
-                    if (appointment.startDate == appointmentViewModel.startDate && appointment.startDate == appointmentViewModel.startDate) {
-                        console.log('found');
+                    if (appointment.startDate.toString() === appointmentViewModel.startDate.toString() && appointment.endDate.toString() === appointmentViewModel.endDate.toString()) {
                         return true;
                     }
+
+                    //(StartA <= EndB)  and  (EndA >= StartB)
+                    if (appointment.startDate <= appointmentViewModel.endDate && appointmentViewModel.endDate >= appointment.startDate) {
+                        return true;
+                    }
+
+                    return false;
                 });
 
                 if (result.length > 0) {
                     return {
-                        outcome: true,
+                        outcome: false,
                         reason: 'There is already an appointment scheduled for this location on this date',
                         conflictId: result[0].id
+                    };
+                } else {
+                    return {
+                        outcome: true,
+                        reason: '',
+                        conflictId: 0
                     };
                 }
             }
