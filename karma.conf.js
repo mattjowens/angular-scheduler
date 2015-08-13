@@ -18,6 +18,7 @@ module.exports = function (config) {
             'lib/moment.js',
             'js/classes/extensions/String.js',
             'js/classes/extensions/Date.js',
+            'js/classes/viewModels/ErrorReportingViewModel.js',
             'js/classes/viewModels/DayViewModel.js',
             'js/classes/viewModels/AppointmentViewModel.js',
             'js/classes/builders/CalendarBuilder.js',

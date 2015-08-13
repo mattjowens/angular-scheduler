@@ -1,12 +1,14 @@
 /**
  * Created by matthewo on 12/08/2015.
  */
-class AppointmentViewModel{
+class AppointmentViewModel extends ErrorReportingViewModel{
     constructor(id, startDate, endDate){
+        super();
         this._id = id;
         this._trainers = [];
         this._startDate = startDate;
         this._endDate = endDate;
+        this._location = null;
     }
 
     get startDate(){
