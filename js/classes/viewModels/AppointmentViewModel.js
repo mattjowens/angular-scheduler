@@ -2,7 +2,7 @@
  * Created by matthewo on 12/08/2015.
  */
 class AppointmentViewModel extends ErrorReportingViewModel{
-    constructor(id, startDate, endDate){
+    constructor(id, startDate, endDate) {
         super();
         this._id = id;
         this._trainers = [];
@@ -29,6 +29,10 @@ class AppointmentViewModel extends ErrorReportingViewModel{
 
     get id(){
         return this._id;
+    }
+
+    get trainers(){
+        return this._trainers;
     }
 
     addTrainer(trainerViewModel){

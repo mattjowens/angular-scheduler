@@ -1,7 +1,7 @@
 /**
  * Created by matthewo on 12/08/2015.
  */
-class DateLocationValidator{
+class LocationDateValidator{
 
     constructor(appointments){
         this._appointments = appointments;

@@ -15,7 +15,6 @@ module.exports = function (config) {
         files: [
             'node_modules/requirejs/require.js',
             'node_modules/linqjs/dist/linq.min.js',
-            'lib/moment.js',
             'js/classes/extensions/String.js',
             'js/classes/extensions/Date.js',
             'js/classes/viewModels/ErrorReportingViewModel.js',
@@ -23,7 +22,8 @@ module.exports = function (config) {
             'js/classes/viewModels/AppointmentViewModel.js',
             'js/classes/builders/CalendarBuilder.js',
             'js/specs/CalendarBuilder-spec.js',
-            'js/classes/validators/DateLocationValidator.js',
+            'js/classes/validators/LocationDateValidator.js',
+            'js/classes/validators/TrainerDateValidator.js',
             'js/specs/DateLocationValidator-spec.js',
         ],
 

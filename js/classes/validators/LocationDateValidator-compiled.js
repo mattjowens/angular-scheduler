@@ -7,14 +7,14 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var DateLocationValidator = (function () {
-    function DateLocationValidator(appointments) {
-        _classCallCheck(this, DateLocationValidator);
+var LocationDateValidator = (function () {
+    function LocationDateValidator(appointments) {
+        _classCallCheck(this, LocationDateValidator);
 
         this._appointments = appointments;
     }
 
-    _createClass(DateLocationValidator, [{
+    _createClass(LocationDateValidator, [{
         key: 'validate',
         value: function validate(appointmentViewModel) {
             if (this._appointments == null || this._appointments.length == 0) {
@@ -54,7 +54,7 @@ var DateLocationValidator = (function () {
         }
     }]);
 
-    return DateLocationValidator;
+    return LocationDateValidator;
 })();
 
-//# sourceMappingURL=DateLocationValidator-compiled.js.map
+//# sourceMappingURL=LocationDateValidator-compiled.js.map

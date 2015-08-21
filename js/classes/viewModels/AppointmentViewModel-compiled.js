@@ -51,6 +51,11 @@ var AppointmentViewModel = (function (_ErrorReportingViewModel) {
         get: function get() {
             return this._id;
         }
+    }, {
+        key: "trainers",
+        get: function get() {
+            return this._trainers;
+        }
     }]);
 
     return AppointmentViewModel;
