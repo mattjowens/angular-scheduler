@@ -13,7 +13,7 @@ describe("DateLocationValidator", function () {
         expect(result.outcome).toBe(true);
     });
 
-    describe('When the location is not the same location', function () {
+    describe('When the trainer is not working same date', function () {
 
         it("Passes when appointment clashes exactly", function () {
             try {
@@ -55,7 +55,7 @@ describe("DateLocationValidator", function () {
         });
     });
 
-    describe('When the location is the same location', function () {
+    describe('When the trainer is working same date', function () {
         it("Fails when appointment clashes exactly", function () {
             try {
                 var appointments = [new AppointmentViewModel(1, new Date(2015, 1, 1), new Date(2015, 1, 2))];
@@ -69,7 +69,7 @@ describe("DateLocationValidator", function () {
             }
         });
 
-        it("Fails when appointment clashes exactly- with time, for same location", function () {
+        it("Fails when appointment clashes exactly- with time, for same trainer", function () {
             try {
                 var appointments = [new AppointmentViewModel(1, new Date(2015, 1, 1, 8, 30, 0), new Date(2015, 1, 2, 17, 30, 0))];
                 var validator = new TrainerDateValidator(appointments);
@@ -82,7 +82,7 @@ describe("DateLocationValidator", function () {
             }
         });
 
-        it("Fails when appointment falls within existing - both bounds, for same location", function () {
+        it("Fails when appointment falls within existing - both bounds, for same trainer", function () {
             try {
                 var appointments = [new AppointmentViewModel(1, new Date(2015, 1, 1, 8, 30, 0), new Date(2015, 1, 2, 17, 30, 0))];
                 var validator = new TrainerDateValidator(appointments);

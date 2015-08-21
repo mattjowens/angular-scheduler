@@ -1,9 +1,8 @@
 /**
  * Created by matthewo on 12/08/2015.
  */
-class AppointmentViewModel extends ErrorReportingViewModel{
+class AppointmentViewModel {
     constructor(id, startDate, endDate) {
-        super();
         this._id = id;
         this._trainers = [];
         this._startDate = startDate;

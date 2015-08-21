@@ -9,7 +9,14 @@ class LocationDateValidator{
 
     validate(appointmentViewModel)
     {
-        if(this._appointments==null || this._appointments.length==0) {
+
+        /*
+          Currently this doesn't consider location of the appointment, it needs to do that by
+          using the location identifier.
+
+        */
+
+                 if(this._appointments==null || this._appointments.length==0) {
             return {
                 outcome:true,
                 reason:'',
