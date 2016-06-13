@@ -1,13 +1,13 @@
 describe("CalendarBuilderSpec", function()
 {
-    it("Year is 2016, Febuary has 29 days",function(){
+    it("Year is 2016, February has 29 days",function(){
         let caldendarBuilder  = new CalendarBuilder(null, 2016);
         let result = caldendarBuilder.buildCalendar();
         console.log(result[1]);
         expect(result[1].length).toBe(29);
     });
 
-    it("Year is 2015, Febuary has 28 days",function(){
+    it("Year is 2015, February has 28 days",function(){
         let caldendarBuilder  = new CalendarBuilder(null, 2015);
         let result = caldendarBuilder.buildCalendar();
         expect(result[1].length).toBe(28);
